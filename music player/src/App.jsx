@@ -18,22 +18,22 @@ function App() {
  ]
  
  const [songData,setSongdata] = useState(data)
-// handleclick = (changingIndex) => {
-//   // if(changingIndex === index) return setSongdata(!added)
-//     return item
-// }
+  const handleClick = (index) => {
+    setSongdata(songData.map((item,i)=>i===index?{...item,added:!item.added }: item));
+};
 
+const favouriteones = songData.filter((item)=>item.added).length
 
   return (
     <div className='w-full h-screen bg-slate-300'>
-    <Navbar />
+    <Navbar favouriteones={favouriteones} />
      <div className='flex flex-wrap px-10 mt-7 gap-8'>
-     {songData.map((item,index)=>
+     {songData.map((item,index)=>(
       <Card key={index}  item={item} 
-      // handleclick={handleclick}
+      handleClick={()=>handleClick(index)}
       //  key={index} index={index} name={item.name} artist={item.artist}  added={item.added} image={item.image} inefficient way to do it 
         />
-    )}
+    ))}
      </div>
     </div>
   )

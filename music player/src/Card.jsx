@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Card({item,key}){
+function Card({item,handleClick}){
 
 // {index,name,artist,added,image} inefficient way to do it
-    const {name,artist,image,added} = item
+    const {name,artist,image,added,index} = item
 
     return(
         <div className=' bg-white w-60  rounded-md flex  pb-10 relative'>
@@ -16,9 +16,9 @@ function Card({item,key}){
                 <h3 className='font-poppins text-xs'>{artist}</h3>
             </div>
             <button className='w-full absolute bottom-0 whitespace-nowrap  bg-orange-500 rounded-md text-white text-xs px-3 py-2'
-            // onClick={}
-                // ()=>handleclick(key)}
-            >{added?'Added':'Add favourite'}</button>
+            onClick={handleClick}
+                // ()=>handleclick(index)}
+            >{added===false?'Add favourite':'❤️'}</button>
 
         </div>
     )
